@@ -25,15 +25,19 @@ public class Project {
     @NotBlank(message = "Project description is required")
     private String description;
 
+    @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date start_date;
 
+    @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date end_date;
 
+    @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date created_At;
 
+    @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
 
