@@ -1,0 +1,17 @@
+import React from 'react';
+import ProjectItem from './Project/ProjectItem';
+
+class Dashboard extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className="alert alert-warning">Welcome to the Dashboard</h1>
+                <ProjectItem />
+                <ProjectItem />
+                <ProjectItem />
+            </div>
+        );
+    }
+}
+
+export default Dashboard;
