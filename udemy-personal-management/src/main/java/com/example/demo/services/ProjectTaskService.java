@@ -10,6 +10,8 @@ import com.example.demo.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectTaskService {
 
@@ -39,7 +41,7 @@ public class ProjectTaskService {
                 projectTask.setStatus("TO_DO");
             }
 
-            if(projectTask.getPriority() == null) { // projectTask.getPriority() == 0 ||
+            if(projectTask.getPriority() == 0 || projectTask.getPriority() == null) { // projectTask.getPriority() == 0 ||
                 projectTask.setPriority(3);
             }
 
@@ -86,6 +88,12 @@ public class ProjectTaskService {
 
     public void deletePTByProjectSequence(String backlog_id, String pt_id) {
         ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);
+
+        Backlog backlog = projectTask.getBacklog();
+        List<ProjectTask> pts = backlog.getProjectTasks();
+        pts.remove(projectTask);
+        backlogRepository.save(backlog);
+
         projectTaskRepository.delete(projectTask);
     }
 
